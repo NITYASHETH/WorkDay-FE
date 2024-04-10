@@ -1,0 +1,30 @@
+/* leaveForm.css */
+
+.leave-form-container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ced4da;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea.form-control {
+  height: 100px; /* Adjust textarea height */
+}
+
+button {
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .leave-form-container {
+    width: 90%;
+  }
+}

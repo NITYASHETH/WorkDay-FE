@@ -1,0 +1,9 @@
+/* usercard.scss */
+.userCard {
+    border: 1px solid #ccc; /* Add border style here */
+    border-radius: 5px; /* Optional: Add border radius for rounded corners */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+ 

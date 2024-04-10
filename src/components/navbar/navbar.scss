@@ -1,0 +1,45 @@
+.navbar {
+  border: 1px solid #ccc; // Add border to navbar
+  border-radius: 5px; // Add border radius
+  padding: 10px; // Add padding for spacing
+
+  .wrapper {
+    display: flex;
+    justify-content: flex-end; // Push icons to the right
+    gap: 10px; // Adjust the gap between icons as needed
+  }
+
+  .item {
+    .icon-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .icon {
+        color: #000;
+        font-size: 24px;
+        transition: color 0.3s ease;
+      }
+    }
+
+    .notification-icon {
+      margin-left: auto; // Push the bell icon to the right
+    }
+
+    .icon-link:hover .notification-icon {
+      color: red; // Change bell icon color on hover
+    }
+
+    .icon-link:hover .chat-icon {
+      color: blue; // Change chat icon color on hover
+    }
+  }
+}

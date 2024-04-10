@@ -1,0 +1,49 @@
+/* login.css */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #3f51b5; /* Adjusted border color */
+  border-radius: 12px; /* Slightly rounded corners */
+  padding: 20px; /* Increased padding */
+  margin-top: 3vh;
+  width: 70%; /* Reduced width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  background-color: #f8f9fa; /* Light gray background color */
+}
+
+.form-container form {
+  width: 100%; /* Full width form within container */
+}
+
+.form-container .MuiFormControl-root {
+  margin-bottom: 16px; /* Increased bottom margin */
+}
+
+.form-container .MuiOutlinedInput-root {
+  border-radius: 10px; /* Rounded input borders */
+  cursor: pointer; /* Cursor pointer on input box */
+}
+
+.form-container .MuiButton-root {
+  margin-top: 16px; /* Increased top margin */
+  background-color: #3f51b5; /* Primary color */
+  color: #fff; /* White text color */
+  border-radius: 20px;
+  padding: 10px 20px; /* Adjusted padding */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer; /* Cursor pointer on button */
+}
+
+.form-container .MuiButton-root:hover {
+  background-color: #303f9f; /* Darker primary color on hover */
+}
+
+/* Add cursor pointer to clickable elements */
+.form-container a,
+.form-container button,
+.form-container .MuiButtonBase-root {
+  cursor: pointer;
+}

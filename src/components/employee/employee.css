@@ -1,0 +1,29 @@
+.employee-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .left-side,
+  .right-side {
+    width: 48%; /* Adjust this value as needed */
+  }
+  
+  /* Style adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+    }
+  
+    .left-side,
+    .right-side {
+      width: 100%;
+    }
+  }
+  

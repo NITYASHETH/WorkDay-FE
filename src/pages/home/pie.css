@@ -1,0 +1,6 @@
+/* styles.css */
+.chartContainer {
+    float: right; /* or use flexbox or grid for more modern layout */
+    margin-left: 20px; /* add some margin for spacing */
+  }
+  

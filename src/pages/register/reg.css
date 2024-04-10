@@ -1,0 +1,55 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #000; /* Thinner black border */
+  border-radius: 12px; /* Slightly rounded corners */
+  padding: 8px; /* Reduced padding */
+  margin-top: 3vh;
+  width: 70%; /* Reduced width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.form-container form {
+  width: 100%; /* Full width form within container */
+}
+
+.form-container .MuiFormControl-root {
+  margin-bottom: 8px; /* Reduced bottom margin */
+}
+
+.form-container .MuiOutlinedInput-root {
+  border-radius: 10px; /* Rounded input borders */
+  cursor: pointer; /* Cursor pointer on input box */
+}
+
+.form-container .MuiButton-root {
+  margin-top: 8px; /* Reduced top margin */
+  background-color: #162ee4; /* Green */
+  color: #fff; /* White */
+  border-radius: 20px;
+  padding: 6px 16px; /* Adjusted padding */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer; /* Cursor pointer on button */
+}
+
+.form-container .MuiButton-root:hover {
+  background-color: #1010d9; /* Darker Green */
+}
+
+/* Add cursor pointer to clickable elements */
+.form-container a,
+.form-container button,
+.form-container .MuiButtonBase-root {
+  cursor: pointer;
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.form-header h4 {
+  margin-bottom: 10px; /* Adjust as needed */
+}
+

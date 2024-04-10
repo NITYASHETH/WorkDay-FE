@@ -1,0 +1,47 @@
+/* UserDetailsModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .modal-content button {
+    margin-top: 10px;
+  }
+  .selected-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circular-image {
+    width: 120px; /* Adjust the size of the circular container */
+    height: 120px; /* Adjust the size of the circular container */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflowing content */
+    margin-bottom: 10px; /* Add some space below the image */
+  }
+  
+  .circular-image img {
+    width: 100%; /* Make the image fill the circular container */
+    height: 100%; /* Make the image fill the circular container */
+    object-fit: cover; /* Scale the image to cover the entire container */
+  }
+  

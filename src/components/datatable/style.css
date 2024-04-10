@@ -1,0 +1,31 @@
+/* styles.css */
+
+/* Override Bootstrap's default link color */
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Style for the buttons */
+  .btn {
+    margin-right: 5px;
+  }
+  
+  /* Style for the user list */
+  .user-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  /* Style for the user item */
+  .user-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  /* Style for the user status */
+  .user-status {
+    font-weight: bold;
+  }
+  

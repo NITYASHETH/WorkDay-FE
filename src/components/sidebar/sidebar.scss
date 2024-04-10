@@ -1,0 +1,135 @@
+.sidebar {
+  flex: 1;
+  border-right: 0.5px solid rgb(230, 227, 227);
+  min-height: 100vh;
+  background-color: transparent; /* Set background color to transparent */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adding a box-shadow for 3D effect */
+
+  .top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #6439ff;
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.5px solid rgb(230, 227, 227);
+  }
+
+  .center {
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between; /* Aligning span elements */
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .title {
+        font-size: 14px;
+        font-weight: bold;
+        color: #999;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ece8ff;
+          border-radius: 15px; 
+        }
+
+        .icon {
+          font-size: 18px;
+          color: black;
+           // Update font color for dark mode
+      &.dark-mode {
+        color: white;
+      }
+        }
+        &:hover .icon {
+          color: #7451f8;
+        }
+       
+        span {
+          font-size: 16px;
+          font-weight: 600;
+          color: black;
+          margin-left: 10px;
+          &.dark-mode {
+            color: white;
+          }
+        }
+        &:hover span {
+          color: #7451f8;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+    .colorOption {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid #7451f8;
+      cursor: pointer;
+      margin: 5px;
+
+      &:nth-child(1) {
+        background-color: whitesmoke;
+      }
+      &:nth-child(2) {
+        background-color: #333;
+      }
+      &:nth-child(3) {
+        background-color: darkblue;
+        
+      }
+      // dark mode styles
+  .colorOption   {
+    .top .logo {
+      color: white; // Change logo color to white in dark mode
+    }
+
+    ul li .icon,
+    ul li span {
+      color: white; // Change icon and span color to white in dark mode
+    }
+  }
+    }
+  }
+}
+
+li.active {
+  position: relative;
+}
+
+li.active::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #7451f8;
+  border-radius: 50%;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}

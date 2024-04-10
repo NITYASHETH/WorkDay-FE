@@ -1,0 +1,113 @@
+/* payroll.css */
+
+.payroll-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Add margin at the bottom to create space */
+}
+
+.vertical-form,
+.horizontal-form {
+  width: 48%; /* Reduce the width slightly to fit both forms on the same line */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.vertical-form .form-group {
+  display: block;
+}
+
+.vertical-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.vertical-form input[type="text"],
+.vertical-form input[type="number"],
+.vertical-form input[type="date"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.horizontal-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.horizontal-form .form-group {
+  flex: 0 0 48%; /* Each form group takes 48% of the width */
+  padding-right: 10px;
+}
+
+.horizontal-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.horizontal-form input[type="text"],
+.horizontal-form input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.horizontal-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.horizontal-form button:hover {
+  background-color: #0056b3;
+}
+
+.earning-detail-form {
+  width: 45%; /* Adjust the width of the earning detail form */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.earning-detail-form .form-group {
+  flex: 0 0 45%; /* Decrease the width of each form group */
+  padding-right: 10px;
+}
+
+.earning-detail-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.earning-detail-form input[type="text"],
+.earning-detail-form input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.earning-detail-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.earning-detail-form button:hover {
+  background-color: #0056b3;
+}

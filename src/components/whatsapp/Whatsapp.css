@@ -1,0 +1,21 @@
+/* Whatsapp.css */
+
+/* Whatsapp.css */
+
+
+
+.whatsapp-icon {
+    position: fixed;
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    cursor: pointer;
+    bottom: 20px; /* Adjust the distance from the bottom */
+    right: 20px; /* Adjust the distance from the right */
+  }
+  
+  
+  .container {
+    position: relative; /* Set position to relative for the container */
+    height: 100vh; /* Set container height to fill the viewport */
+  }
+  

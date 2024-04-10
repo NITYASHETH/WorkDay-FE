@@ -1,0 +1,11 @@
+.chart-container {
+    width: 80%; /* Set the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .chart-canvas {
+    display: block; /* Make the canvas a block-level element */
+    width: 100%; /* Make the canvas fill its container */
+    height: 400px; /* Set the height of the canvas */
+  }
+  
