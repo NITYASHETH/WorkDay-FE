@@ -30,6 +30,8 @@ import TaskIcon from '@mui/icons-material/Task';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Image from '../../components/image/hr.png';
+import Imageemp from '../../components/image/emp.png';
+import Imageman from '../../components/image/manager.png';
 import WorkIcon from '@mui/icons-material/Work';
 // import PaymentIcon from '@mui/icons-material/Payment';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
@@ -90,7 +92,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar" style={{ backgroundColor: "transparent" }} onMouseMove={resetIdleTimeout} onClick={resetIdleTimeout}>
+    <div className="sidebar" style={{ backgroundColor: " #333333" }} onMouseMove={resetIdleTimeout} onClick={resetIdleTimeout}>
       <div className="top">
         {getUserDetailsFunc() === "admin" &&  <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">ADMINDASHBOARD</span>
@@ -101,10 +103,10 @@ const Sidebar = () => {
   </Link>
 }
         {getUserDetailsFunc() === "manager" &&  <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">MANAGERDASHBOARD</span>
+        <img src={Imageman} alt="user" style={{ height: '100px', width: '200px' }} />
         </Link> }
         {getUserDetailsFunc() === "employee" &&  <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">EMPLOYEE</span>
+        <img src={Imageemp} alt="user" style={{ height: '150px', width: '250px' }} />
         </Link> }
         {getUserDetailsFunc() === "company" &&  <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">COMPANY</span>
@@ -121,7 +123,7 @@ const Sidebar = () => {
           {/* <li className={activePage === "/" ? "active" : ""}> */}
             
             <DashboardCustomizeOutlinedIcon className="icon" />
-            <span style={{ color: "black" }}>Dashboard</span>
+            <span style={{ color: "white" }}>Dashboard</span>
           {/* </li> */}
           </Link>
 
@@ -209,8 +211,8 @@ const Sidebar = () => {
           
           {getUserDetailsFunc() === "manager" && <Link to="/employeeform" style={{ textDecoration: "none" }}>
             <li>
-              {/* <StoreIcon className="icon" /> */}
-              <span>task</span>
+            <TaskIcon className="icon" />
+              <span> Assign Task</span>
             </li>
           </Link>}
              {/* {getUserDetailsFunc() === "hr" && <Link to="/hr" style={{ textDecoration: "none" }}>
@@ -220,6 +222,18 @@ const Sidebar = () => {
             </li>
           </Link>} */}
              {getUserDetailsFunc() === "company" && <Link to="/users" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonIcon className="icon" />
+              <span>all users</span>
+            </li>
+          </Link>}
+             {getUserDetailsFunc() === "company" && <Link to="/employeelist" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonIcon className="icon" />
+              <span>Employees Details</span>
+            </li>
+          </Link>}
+             {getUserDetailsFunc() === "manager" && <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonIcon className="icon" />
               <span>all users</span>
@@ -262,13 +276,13 @@ const Sidebar = () => {
           </Link>}
           
           
-          {getUserDetailsFunc() === "hr" &&  <Link to="/payrolldisplay" style={{ textDecoration: "none" }}>
+          {getUserDetailsFunc() === "manager" &&  <Link to="/payrolldisplay" style={{ textDecoration: "none" }}>
           <li>
             <ReceiptIcon className="icon" />
             <span> Employee Payroll Details</span>
           </li>
           </Link>}
-          {getUserDetailsFunc() === "manager" &&  <Link to="/salaryview" style={{ textDecoration: "none" }}>
+          {getUserDetailsFunc() === "manager" &&  <Link to="/model" style={{ textDecoration: "none" }}>
           <li>
             {/* <ExitToAppIcon className="icon" /> */}
             <span>PAYROLL</span>

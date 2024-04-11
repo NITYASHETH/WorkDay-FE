@@ -41,14 +41,14 @@ const DashboardDesign = () => {
           datasets: [{
             data: [totalSalary, extraCost, profit],
             backgroundColor: [
-              "#E72929", // Red
-              "#0802A3", // Blue
-              "#FFFF00"  // Yellow
+              "#E6ECF3", // Red
+              "#FFE3BB", // Blue
+              "#FFF9D5"  // Yellow
             ],
             borderColor: [
-              "#E72929",
-              "#0802A3",
-              "#FFFF00"
+              "#E6ECF3", // Red
+              "#FFE3BB", // Blue
+              "#FFF9D5"  // Yellow
             ],
             borderWidth: 1,
           }]

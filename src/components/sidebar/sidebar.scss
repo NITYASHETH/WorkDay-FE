@@ -2,37 +2,44 @@
   flex: 1;
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
-  background-color: transparent; /* Set background color to transparent */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Adding a box-shadow for 3D effect */
+  background-color: #333333; /* Set your desired light black background color here */
+  background-color: white;
+  box-shadow: 2px 0 5px ; /* Adding a box-shadow for 3D effect */
 
+  /* Styles for the top section */
   .top {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
 
+    /* Styles for the logo */
     .logo {
       font-size: 24px;
       font-weight: bold;
-      color: #6439ff;
+      color: #fff; /* Set font color to white */
     }
   }
 
+  /* Styles for horizontal line */
   hr {
     height: 0;
     border: 0.5px solid rgb(230, 227, 227);
   }
 
+  /* Styles for the center section */
   .center {
     padding-left: 10px;
     display: flex;
     justify-content: space-between; /* Aligning span elements */
 
+    /* Styles for the unordered list */
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
 
+      /* Styles for the title */
       .title {
         font-size: 14px;
         font-weight: bold;
@@ -41,38 +48,46 @@
         margin-bottom: 5px;
       }
 
+      /* Styles for list items */
       li {
         display: flex;
         align-items: center;
         padding: 5px;
         cursor: pointer;
 
+        /* Hover effect */
         &:hover {
           background-color: #ece8ff;
           border-radius: 15px; 
         }
 
+        /* Styles for icons */
         .icon {
           font-size: 18px;
-          color: black;
-           // Update font color for dark mode
-      &.dark-mode {
-        color: white;
-      }
+          color:white;
+          // Update font color for dark mode
+          &.dark-mode {
+            color: white;
+          }
         }
+
+        /* Hover styles for icons */
         &:hover .icon {
           color: #7451f8;
         }
        
+        /* Styles for text */
         span {
           font-size: 16px;
           font-weight: 600;
-          color: black;
+          color: white; /* Set font color to white */
           margin-left: 10px;
           &.dark-mode {
             color: white;
           }
         }
+
+        /* Hover styles for text */
         &:hover span {
           color: #7451f8;
         }
@@ -80,11 +95,13 @@
     }
   }
 
+  /* Styles for the bottom section */
   .bottom {
     display: flex;
     align-items: center;
     margin: 10px;
 
+    /* Styles for color options */
     .colorOption {
       width: 20px;
       height: 20px;
@@ -93,6 +110,7 @@
       cursor: pointer;
       margin: 5px;
 
+      /* Different color options */
       &:nth-child(1) {
         background-color: whitesmoke;
       }
@@ -100,24 +118,25 @@
         background-color: #333;
       }
       &:nth-child(3) {
-        background-color: darkblue;
-        
+        background-color: darkblue;   
       }
-      // dark mode styles
-  .colorOption   {
-    .top .logo {
-      color: white; // Change logo color to white in dark mode
-    }
+      
+      // Dark mode styles
+      .colorOption   {
+        .top .logo {
+          color: white; // Change logo color to white in dark mode
+        }
 
-    ul li .icon,
-    ul li span {
-      color: white; // Change icon and span color to white in dark mode
-    }
-  }
+        ul li .icon,
+        ul li span {
+          color: white; // Change icon and span color to white in dark mode
+        }
+      }
     }
   }
 }
 
+/* Styles for active list items */
 li.active {
   position: relative;
 }

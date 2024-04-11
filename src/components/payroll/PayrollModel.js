@@ -94,7 +94,7 @@ function PayrollModel() {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} md={6}>
-              <div className="payroll-form" style={{ background: '#f8f4e5', padding: '50px 20px', borderTop: '10px solid #f45702', borderRadius: '10px' }}>
+              <div className="payroll-form" style={{ background: '#fff', padding: '50px 20px', borderTop: '10px solid #f45702', borderRadius: '10px' }}>
                 <h2 style={{ fontWeight: 'normal', fontSize: '12pt', fontStyle: 'italic', margin: '0 0 .5em 0' }}>Enter Month and Year</h2>
                 <TextField
                   autoFocus
@@ -118,7 +118,7 @@ function PayrollModel() {
                 <Button onClick={handleSubmit} className="btn btn-primary">
                   Submit
                 </Button>
-                {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+                {error && <p style={{ color: 'white', marginTop: '10px' }}>{error}</p>}
               </div>
             </Col>
           </Row>

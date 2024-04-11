@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 
@@ -10,7 +10,15 @@ const TaskDisplay = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/tasks`);
+        // Retrieve user data from localStorage
+        const userDataString = localStorage.getItem("users");
+        if (!userDataString) {
+          throw new Error('User data not found in localStorage');
+        }
+        const { cid } = JSON.parse(userDataString);
+
+        // Fetch tasks based on cid
+        const response = await fetch(`http://localhost:3001/tasks?cid=${cid}`);
         if (!response.ok) {
           throw new Error('Failed to fetch tasks');
         }
@@ -49,8 +57,8 @@ const TaskDisplay = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <div style={{ overflow: 'hidden', height: '80vh' }}> {/* Fixed height and hidden overflow */}
-          <TableContainer component={Paper} style={{ overflow: 'auto' }}> {/* Allow scrolling within the container */}
+        <div style={{ overflow: 'hidden', height: '80vh' }}>
+          <TableContainer component={Paper} style={{ overflow: 'auto' }}>
             <Table aria-label="tasks table">
               <TableHead>
                 <TableRow>

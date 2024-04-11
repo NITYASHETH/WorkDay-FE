@@ -7,7 +7,7 @@ import micP from '../../components/image/vk.png';
 
 const styles = {
   container: {
-    backgroundColor: '#28223F',
+    backgroundColor: 'white', // Changed background color to white
     fontFamily: 'Montserrat, sans-serif',
     display: 'flex',
     alignItems: 'center',
@@ -15,6 +15,7 @@ const styles = {
     flexDirection: 'column',
     minHeight: '100vh',
     margin: 0,
+    padding: '20px', // Added padding for better alignment
   },
   cardContainer: {
     backgroundColor: '#231E39',
@@ -42,6 +43,7 @@ const styles = {
     fontFamily: 'Montserrat, sans-serif',
     fontWeight: 500,
     padding: '10px 25px',
+    marginTop: '20px', // Added marginTop for spacing
   },
   ghostButton: {
     backgroundColor: 'transparent',
@@ -106,8 +108,7 @@ const ProfileCard = ({ imageUrl }) => {
     } else if (userProfile && userProfile.email === 'hr@microsoft.com') {
       // If email is empty, render the provided image
       return <img style={styles.roundImage} src={micP} alt="user" />;
-    } 
-    else if (userProfile) {
+    } else if (userProfile) {
       // Otherwise, render the default image
       return <img style={styles.roundImage} src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />;
     } else {
@@ -129,11 +130,10 @@ const ProfileCard = ({ imageUrl }) => {
                 <h3>Name: {userProfile.fname}</h3>
                 <h6>Role: {userProfile.role}</h6>
                 <p>Email: {userProfile.email}</p>
-                {/* Add more fields as needed */}
-                {/* <div className="buttons">
-                  <button style={styles.primaryButton}>Message</button>
-                  <button style={{ ...styles.primaryButton, ...styles.ghostButton }}>Following</button>
-                </div> */}
+                {/* Additional fields */}
+                <p>Mobile Number: {userProfile.mobileNumber}</p>
+                <p>City: {userProfile.city}</p>
+                <p>State: {userProfile.state}</p>
                 {userProfile.skills && Array.isArray(userProfile.skills) && (
                   <div style={styles.skillsContainer}>
                     <h6>Skills</h6>
@@ -145,6 +145,8 @@ const ProfileCard = ({ imageUrl }) => {
                     </ul>
                   </div>
                 )}
+                {/* Update button */}
+                <button style={styles.primaryButton}>Update</button>
               </>
             )}
           </div>

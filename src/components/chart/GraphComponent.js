@@ -11,7 +11,24 @@ const GraphComponent = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/user-salaries?cid=1&role=employee'); // Replace with your API endpoint
+      // Retrieve users data from localStorage
+      const usersData = localStorage.getItem('users');
+      
+      // Check if usersData exists and parse it
+      if (!usersData) {
+        console.error('Users data not found in localStorage');
+        return;
+      }
+      
+      const { cid } = JSON.parse(usersData);
+      
+      // Check if cid exists
+      if (!cid) {
+        console.error('CID not found in users data');
+        return;
+      }
+  
+      const response = await axios.get(`http://localhost:3001/user-salaries?cid=${cid}&role=employee&role=hr&role=manager`);
       setDataForBarGraph(response.data.dataForBarGraph);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -19,7 +36,7 @@ const GraphComponent = () => {
   };
 
   // Define custom colors
-  const colors = ['#FFFF00', '#D71313', '#0C359E'];
+  const colors = ['#E6ECF3', '#FFF9D5', '#FFE3BB'];
 
   // Prepare data for the bar graph
   const chartData = {

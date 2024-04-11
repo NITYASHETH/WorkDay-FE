@@ -108,9 +108,9 @@ const CompanyReg = () => {
         });
 
         // Redirect to login page after successful registration
-        setTimeout(() => {
-          navigate('/login');
-        }, 3000); // Redirect after 3 seconds
+        // setTimeout(() => {
+        //   navigate('/login');
+        // }, 3000); // Redirect after 3 seconds
       } catch (error) {
         toast.error(error.message || 'Registration failed', {
           position: 'top-center',

@@ -17,7 +17,7 @@ const PieChart = () => {
             {
               label: "# of Votes",
               data: [12, 19, 3],
-              backgroundColor: ["red", "blue", "yellow"],
+              backgroundColor: ["purple", "blue", "yellow"],
             },
           ],
         },

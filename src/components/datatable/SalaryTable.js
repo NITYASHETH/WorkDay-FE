@@ -16,52 +16,41 @@ const SalaryTable = () => {
       const userCid = getUserByCid();
       const response = await fetch(`http://localhost:3001/users?cid=${userCid}`);
       const userData = await response.json();
-
+  
       const userListWithId = userData.userList.map((user, index) => ({
         ...user,
         id: user._id
       }));
-
+  
       // Filter out users with roles 'company' or 'admin'
       const filteredUsers = userListWithId.filter(user => user.role !== 'company' && user.role !== 'admin');
-
-      setData(filteredUsers);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-    fetchSalaries();
-  };
-
-  const getUserByCid = () => {
-    const userDataString = localStorage.getItem("users");
-    const userData = JSON.parse(userDataString);
-    return userData.cid;
-  };
-
-  const fetchSalaries = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/salaries");
-      const salaryData = await response.json();
-
+  
+      // Fetch salary data from the backend
+      const salaryResponse = await fetch("http://localhost:3001/salaries");
+      const salaryData = await salaryResponse.json();
+  
       if (salaryData.success) {
-        setData((prevData) => {
-          const newData = prevData.map((user) => {
-            const salaryInfo = salaryData.salaries.find(
-              (salary) => salary.userId === user.id
-            );
-            if (salaryInfo) {
-              return { ...user, salary: salaryInfo.amount };
-            }
-            return user;
-          });
-          return newData;
+        // Merge salary data with user data
+        const mergedData = filteredUsers.map(user => {
+          const salaryInfo = salaryData.salaries.find(salary => salary.userId._id === user.id);
+          return {
+            ...user,
+            salary: salaryInfo ? salaryInfo.amount : 0 // Default to 0 if no salary info found
+          };
         });
+        setData(mergedData);
       } else {
         console.error("Failed to fetch salaries:", salaryData.message);
       }
     } catch (error) {
-      console.error("Error fetching salaries:", error);
+      console.error("Error fetching data:", error);
     }
+  };
+  
+  const getUserByCid = () => {
+    const userDataString = localStorage.getItem("users");
+    const userData = JSON.parse(userDataString);
+    return userData.cid;
   };
 
   const handleAddClick = async (user) => {
@@ -170,15 +159,11 @@ const SalaryTable = () => {
             className="datagrid"
             rows={data}
             columns={userColumns}
-            pageSize={9}
-            rowsPerPageOptions={[9]}
-            checkboxSelection
           />
         </div>
       </div>
     </div>
   );
-  
 };
 
 export default SalaryTable;

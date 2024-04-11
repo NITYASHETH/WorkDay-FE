@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import Sidebar from '../sidebar/Sidebar';
 import Navbar from '../navbar/Navbar';
-import taskIcon from '../../components/image/taskimg';
 
 const EmployeeForm = () => {
   const [title, setTitle] = useState('');
@@ -103,6 +102,23 @@ const EmployeeForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Title Validation: Ensure no numeric values
+      if (!/^\D+$/.test(title)) {
+        throw new Error('Title should not contain numeric values');
+      }
+
+      // Description Validation: Ensure no numeric values
+      if (!/^\D+$/.test(description)) {
+        throw new Error('Description should not contain numeric values');
+      }
+
+      // Due Date Validation: Ensure future dates only
+      const currentDate = new Date();
+      const selectedDate = new Date(dueDate);
+      if (selectedDate <= currentDate) {
+        throw new Error('Due date must be in the future');
+      }
+
       const response = await fetch('http://localhost:3001/tasks', {
         method: 'POST',
         headers: {
@@ -144,13 +160,11 @@ const EmployeeForm = () => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f4f4f4' }}>
           <Card style={{ width: '70%', margin: '20px', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
             <CardContent>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Typography variant="h5" component="h2" style={{ marginBottom: '20px' }}>
-                  <img src={taskIcon} alt="Task Icon" style={{ height: '150px', width: '150px' }} />
-                </Typography>
-              </div>
-              <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                <div style={{ width: '45%' }}>
+              <Typography variant="h4" component="h1" style={{ marginBottom: '20px', fontStyle: 'italic', textAlign: 'center' }}>
+                Assign Task
+              </Typography>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', width: '100%', marginBottom: '20px' }}>
+                <div style={{ width: '100%' }}>
                   <TextField
                     label="Title"
                     value={title}
@@ -180,8 +194,6 @@ const EmployeeForm = () => {
                     style={{ marginBottom: '20px' }}
                     InputLabelProps={{ shrink: true }}
                   />
-                </div>
-                <div style={{ width: '45%' }}>
                   <FormControl fullWidth margin="dense" style={{ marginBottom: '20px' }}>
                     <InputLabel htmlFor="assignedTo">Assigned To</InputLabel>
                     <Select

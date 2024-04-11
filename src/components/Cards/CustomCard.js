@@ -21,6 +21,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ThumbDownOffAltSharpIcon from '@mui/icons-material/ThumbDownOffAltSharp';
+import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 
 const CustomCard = ({ title, value, style, fontColor, isRegistered, isApproved, isRejected }) => {
   // Function to get user details from local storage
@@ -50,7 +52,7 @@ const CustomCard = ({ title, value, style, fontColor, isRegistered, isApproved, 
   };
 
   // Render the card only if the user is an HR
-  if (getUserDetailsFunc() === "company" || getUserDetailsFunc() === "employee" || getUserDetailsFunc() === "hr" || getUserDetailsFunc() === "admin") {
+  if (getUserDetailsFunc() === "company" || getUserDetailsFunc() === "employee" || getUserDetailsFunc() === "hr" || getUserDetailsFunc() === "admin" || getUserDetailsFunc() === "manager") {
     return (
       <Card style={cardStyle}>
         <CardContent style={{ width: '100%' }}>
@@ -59,9 +61,9 @@ const CustomCard = ({ title, value, style, fontColor, isRegistered, isApproved, 
             <Typography variant="h5" component="h2" style={{ ...titleStyle, marginLeft: title === "Leave Requests" ? '0' : '50px' }}>
               {title}
             </Typography>
-            {isRegistered && <HowToRegIcon style={{ fontSize: 20, color: 'blue', marginLeft: '10px' }} />}
-            {isApproved && <CheckCircleOutlineIcon style={{ fontSize: 20, color: 'green', marginLeft: '10px' }} />}
-            {isRejected && <ThumbDownAltOutlinedIcon style={{ fontSize: 20, color: 'red', marginLeft: '10px' }} />}
+            {isRegistered && <HowToRegIcon style={{ fontSize: 20, color: '', marginLeft: '10px' }} />}
+            {isApproved && <HowToRegIcon style={{ fontSize: 20, color: 'green', marginLeft: '10px' }} />}
+            {isRejected && <HowToRegIcon  style={{ fontSize: 20, color: 'red', marginLeft: '10px' }} />}
           </div>
           <Typography variant="body2" component="p" style={{ ...titleStyle, marginTop: 'auto' }}>
             {value}

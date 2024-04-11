@@ -62,6 +62,13 @@ import UsersList from './pages/Admin/UsersList';
 import CompanyReg from './pages/register/CompanyReg';
 import Empcard from './components/datatable/Empcard';
 import SalaryDetails from './components/payroll/SalaryDetails';
+import Wavegraph from './components/chart/Wavegraph';
+//import ProfileCard from './pages/profile/Profile';
+import EmployeeList from './pages/profile/EmployeeList';
+import { Test } from './components/chart/Test';
+import TestOf from './pages/profile/TestOf';
+import CompanyChart from './components/chart/CompanyChart';
+import ProjectGraph from './components/chart/ProjectGraph';
 
 // import Sidebar from './components/sidebar/Sidebar';
 
@@ -153,6 +160,12 @@ function App() {
               <Route path="/creg" element={<CompanyReg/>} />
               <Route path="/cardd" element={<Empcard/>} />
               <Route path="/SalaryDetails" element={<SalaryDetails/>} />
+              <Route path="/Wavegraph" element={<Wavegraph/>} />
+              <Route path="/employeelist" element={<EmployeeList/>} />
+              <Route path="/Test" element={<Test/>} />
+              <Route path="/testof" element={<TestOf/>} />
+              <Route path="/companychart" element={<CompanyChart/>} />
+              <Route path="/projectgraph" element={<ProjectGraph/>} />
              
               
             

@@ -10,10 +10,10 @@ const AlertDisplay = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchAlerts = async () => {
+  const fetchAlerts = async (cid) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/alerts');
+      const response = await fetch(`http://localhost:3001/alerts?cid=${cid}`);
       if (!response.ok) {
         throw new Error('Failed to fetch alerts');
       }
@@ -29,59 +29,52 @@ const AlertDisplay = () => {
   };
 
   useEffect(() => {
-    fetchAlerts();
+    const userDetails = JSON.parse(localStorage.getItem('users'));
+    if (userDetails && userDetails.cid) {
+      const cid = userDetails.cid;
+      fetchAlerts(cid);
+    } else {
+      console.warn('CID not found in localStorage');
+    }
   }, []); // Fetch alerts only once when the component mounts
 
   const handleAlertClick = (alert) => {
     console.log('Clicked on alert:', alert);
   };
 
-  const getAlertColor = (alertType) => {
-    switch(alertType) {
-      case 'success':
-        return '#dcedc8'; // Light Green
-      case 'info':
-        return '#cfd8dc'; // Light Blue
-      case 'warning':
-        return '#ffecb3'; // Light Yellow
-      case 'danger':
-        return '#ffcdd2'; // Light Red
-      default:
-        return '#ffffff'; // White
-    }
-  };
+  const getAlertColor = () => '#ffffff'; // White color
 
   return (
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-    <Box p={3}>
-      <h2>Alerts</h2>
-      <Box>
-        {loading ? (
-          <CircularProgress />
-        ) : (
-          <Grid container spacing={2}>
-            {alerts.map((alert, index) => (
-              <Grid key={index} item xs={12} sm={6} md={4}>
-                <Card onClick={() => handleAlertClick(alert)} style={{ backgroundColor: getAlertColor(alert.alertType) }}>
-                  <CardContent>
-                    <Typography variant="h6" gutterBottom>{alert.title}</Typography>
-                    <Typography variant="body1">{alert.message}</Typography>
-                    {alert.userId && (                      
-                      <Typography variant="body2">Created by: {alert.userId.fname}</Typography>
-                    )}
-                  </CardContent>
-                </Card>
+        <Box p={3}>
+          <h2>Alerts</h2>
+          <Box>
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <Grid container spacing={2}>
+                {alerts.map((alert, index) => (
+                  <Grid key={index} item xs={12} sm={6} md={4}>
+                    <Card onClick={() => handleAlertClick(alert)} style={{ backgroundColor: getAlertColor() }}>
+                      <CardContent>
+                        <Typography variant="h6" gutterBottom>{alert.title}</Typography>
+                        <Typography variant="body1">{alert.message}</Typography>
+                        {alert.userId && (                      
+                          <Typography variant="body2">Created by: {alert.userId.fname}</Typography>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-        )}
-      </Box>
-      <ToastContainer />
-    </Box>
-    </div>
+            )}
+          </Box>
+          <ToastContainer />
+        </Box>
+      </div>
     </div>
   );
 };

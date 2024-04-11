@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Button, Card, CardContent, Typography, TextField, TextareaAutosize, Snackbar } from '@mui/material';
+import { Box, Button, Card, CardContent, Typography, TextField, TextareaAutosize, Snackbar, Table, TableContainer, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 import { Alert } from '@mui/material';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
@@ -30,13 +30,16 @@ function ProjectCreate() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/projects');
+      const userData = JSON.parse(localStorage.getItem('users'));
+      const cid = userData && userData.cid ? userData.cid : ''; // Get cid from localStorage
+      const response = await axios.get(`http://localhost:3001/projects?cid=${cid}`);
       setProjects(response.data);
     } catch (error) {
       console.error('Error fetching projects:', error);
       setErrorMessage('Failed to fetch projects');
     }
   };
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -167,36 +170,36 @@ function ProjectCreate() {
         </CardContent>
       </Card>
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Your Current Projects</h2>
-      <Box display="flex" justifyContent="center">
-        <Box>
-          {projects.length > 0 && (
-            <Card style={{ width: '300px', marginBottom: '20px' }}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  {projects[currentIndex].projectname}
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Created Date: {projects[currentIndex].projectcreateddate}
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Due Date: {projects[currentIndex].projectduedate}
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Description: {projects[currentIndex].projectdescription}
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Status: {projects[currentIndex].projectstatus}
-                </Typography>
-                <Box display="flex" justifyContent="center">
-                  <Button onClick={() => handleDelete(projects[currentIndex]._id)} variant="contained" color="error">
+      <TableContainer component={Card}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Project Name</TableCell>
+              <TableCell>Created Date</TableCell>
+              <TableCell>Due Date</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {projects.map((project, index) => (
+              <TableRow key={index}>
+                <TableCell>{project.projectname}</TableCell>
+                <TableCell>{project.projectcreateddate}</TableCell>
+                <TableCell>{project.projectduedate}</TableCell>
+                <TableCell>{project.projectdescription}</TableCell>
+                <TableCell>{project.projectstatus}</TableCell>
+                <TableCell>
+                  <Button onClick={() => handleDelete(project._id)} variant="contained" color="error">
                     Delete
                   </Button>
-                </Box>
-              </CardContent>
-            </Card>
-          )}
-        </Box>
-      </Box>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Box display="flex" justifyContent="center" style={{ marginBottom: '20px' }}>
         <Button onClick={handlePrevious} variant="contained" color="primary" style={{ marginRight: '10px' }}>
           &lt;&lt;

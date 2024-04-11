@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Typography, Container, Select, MenuItem, FormControl, InputLabel, InputAdornment, IconButton, Grid, FormControlLabel, RadioGroup, Radio, FormLabel } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,6 @@ const Register = () => {
     email: '',
     password: '',
     role: '',
-    cid: '',
     mobileno: '',
     city: '',
     state: '',
@@ -52,7 +51,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const { fname, email, password, role, cid, mobileno, city, state, country, gender } = formData;
+    const { fname, email, password, role, mobileno, city, state, country, gender } = formData;
   
     // Email validation regex pattern
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -99,7 +98,6 @@ const Register = () => {
           email: '',
           password: '',
           role: '',
-          cid: '',
           mobileno: '',
           city: '',
           state: '',
@@ -143,6 +141,17 @@ const Register = () => {
     console.log("userDetails", userDetails)
     return userDetails?.role
   }
+
+  useEffect(() => {
+    const user = localStorage.getItem("users");
+    const userDetails = JSON.parse(user);
+    if (userDetails?.cid) {
+      setFormData(prevState => ({
+        ...prevState,
+        cid: userDetails.cid
+      }));
+    }
+  }, []);
 
   return (
     <div className="home">
@@ -226,34 +235,34 @@ const Register = () => {
                   <FormControl fullWidth variant="outlined" margin="normal">
                     <InputLabel id="role-label">Role</InputLabel>
                     <Select
-                      labelId="role-label"
-                      id="role"
-                      name="role"
-                      value={formData.role}
-                      onChange={handleChange}
-                      label="Role"
-                    >
-                      <MenuItem value="admin">Admin</MenuItem>
-                      <MenuItem value="employee">Employee</MenuItem>
-                      <MenuItem value="hr">HR</MenuItem>
-                      {/* <MenuItem value="company">Company</MenuItem> */}
-                      <MenuItem value="manager">Manager</MenuItem>
-                    </Select>
+  labelId="role-label"
+  id="role"
+  name="role"
+  value={formData.role}
+  onChange={handleChange}
+  label="Role"
+>
+  {getUserDetailsFunc() === "company" && (
+    <MenuItem value="manager">Manager</MenuItem>
+  )}
+  {getUserDetailsFunc() === "hr" && (
+    <MenuItem value="employee">Employee</MenuItem>
+  )}
+  {getUserDetailsFunc() === "manager" && (
+    <MenuItem value="hr">HR</MenuItem>
+  )}
+  {getUserDetailsFunc() === "admin" && (
+    <>
+      <MenuItem value="admin">Admin</MenuItem>
+      <MenuItem value="employee">Employee</MenuItem>
+      <MenuItem value="hr">HR</MenuItem>
+      <MenuItem value="manager">Manager</MenuItem>
+    </>
+  )}
+</Select>
                   </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    id="cid"
-                    label="CID"
-                    name="cid"
-                    autoComplete="cid"
-                    value={formData.cid}
-                    onChange={handleChange}
-                    placeholder="Enter CI"
-                  />
                   <TextField
                     variant="outlined"
                     margin="normal"
