@@ -10,7 +10,13 @@ function NewLeave() {
   useEffect(() => {
     async function fetchLeaveRequests() {
       try {
-        const response = await fetch('http://localhost:3001/api/leave', {
+        // Retrieve cid from localStorage
+        const cid = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')).cid : null;
+        if (!cid) {
+          throw new Error('CID not found in localStorage');
+        }
+  
+        const response = await fetch(`http://localhost:3001/api/leave?cid=${cid}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -31,7 +37,7 @@ function NewLeave() {
     
     fetchLeaveRequests();
   }, []);
-
+  
   const handleStatusUpdate = async (id, newStatus) => {
     try {
       const response = await fetch(`http://localhost:3001/api/leave/${id}/${newStatus}`, {
